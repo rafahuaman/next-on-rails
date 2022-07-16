@@ -1,0 +1,2 @@
+backend: cd backend && bin/rails server -p 5000
+frontend: cd frontend && yarn dev -p 3000
