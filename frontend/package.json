@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
+    "dev:test": "NODE_ENV=test next dev -p 3099",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test dev:test http://localhost:3099 cypress",
+    "e2e:headless": "start-server-and-test dev:test http://localhost:3099 cypress:headless"
   },
   "dependencies": {
     "next": "12.2.2",
@@ -14,11 +19,14 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.3",
     "@types/node": "18.0.5",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "cypress": "^10.3.0",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.2",
+    "start-server-and-test": "^1.14.0",
     "typescript": "4.7.4"
   }
 }
