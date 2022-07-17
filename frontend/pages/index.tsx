@@ -51,8 +51,10 @@ const Home: NextPage = ({ todoLists }) => {
 
 export default Home;
 
+const API_URL = process.env.API_URL;
+
 export const getServerSideProps = async () => {
-  const response = await fetch("http://localhost:5000/todo_lists.json");
+  const response = await fetch(`${API_URL}/todo_lists.json`);
   const data = await response.json();
 
   return { props: { todoLists: data } };
