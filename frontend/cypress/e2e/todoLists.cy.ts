@@ -2,7 +2,7 @@ describe("empty spec", () => {
   it("passes", () => {
     cy.appFactories({
       factory: "todo_list",
-      factory_method: "create",
+      factoryMethod: "create",
       attributes: {
         name: "My Todo List",
       },
@@ -15,7 +15,7 @@ describe("empty spec", () => {
   it("passes too", () => {
     cy.appFactories({
       factory: "todo_list",
-      factory_method: "create_list",
+      factoryMethod: "create_list",
       list_count: 2,
       attributes: {
         name: "My Todo List",

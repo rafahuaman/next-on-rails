@@ -51,7 +51,6 @@ Cypress.Commands.add("appFactories", (args) => {
   cy.request({
     url: `${Cypress.env("backend_url")}/test/factories`,
     method: "post",
-    form: true,
     failOnStatusCode: true,
     body: args,
   }).its("body");
