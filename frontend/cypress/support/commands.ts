@@ -37,3 +37,12 @@
 // }
 
 import "@testing-library/cypress/add-commands";
+
+Cypress.Commands.add("cleanDatabase", () => {
+  cy.request({
+    url: `${Cypress.env("backend_url")}/test/database_cleaner/clean`,
+    method: "post",
+    form: true,
+    failOnStatusCode: true,
+  }).its("body");
+});
