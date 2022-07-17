@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :todo_lists
   resources :tasks
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'todo_lists#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  if Rails.env.test?
+    namespace :test do
+      post 'database_cleaner/clean' => 'database_cleaner#clean'
+    end
+  end
 end
