@@ -10,8 +10,9 @@
     "lint": "next lint",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "start-server-and-test dev:test http://localhost:3099 cypress",
-    "e2e:headless": "start-server-and-test dev:test http://localhost:3099 cypress:headless"
+    "backend:test:start": "../backend/bin/rails server -e test -p 5099 -P ../backend/tmp/pids/server2.pid",
+    "e2e": "start-server-and-test dev:test 3099 backend:test:start 5099/tasks cypress",
+    "e2e:headless": "start-server-and-test dev:test 3099 backend:test:start 5099/tasks cypress:headless"
   },
   "dependencies": {
     "next": "12.2.2",
