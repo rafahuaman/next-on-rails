@@ -61,6 +61,6 @@ class Test::FactoriesController < ApplicationController
   end
 
   def sanitize_key(key)
-    key.underscore.to_sym
+    key.to_sym
   end
 end

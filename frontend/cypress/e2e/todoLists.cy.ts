@@ -1,28 +1,35 @@
 describe("empty spec", () => {
   it("passes", () => {
-    cy.appFactories({
+    cy.createList({
       factory: "todo_list",
-      factoryMethod: "create",
+      listCount: 2,
       attributes: {
         name: "My Todo List",
       },
     });
     cy.visit("/");
     cy.findByText("Todo Lists").should("be.visible");
-    cy.findByText("My Todo List").should("be.visible");
+    cy.findAllByText("My Todo List").should("be.visible");
   });
 
   it("passes too", () => {
-    cy.appFactories({
+    cy.create({
       factory: "todo_list",
-      factoryMethod: "create_list",
-      list_count: 2,
       attributes: {
         name: "My Todo List",
       },
+    }).as("list");
+    cy.get<{ id: Number }>("@list").then(({ id: listId }) => {
+      cy.create({
+        factory: "task",
+        attributes: { todoListId: listId, title: "My task" },
+      });
     });
+
     cy.visit("/");
+
     cy.findByText("Todo Lists").should("be.visible");
-    cy.findAllByText("My Todo List").should("have.length", 2);
+    cy.findByText("My Todo List").should("be.visible");
+    cy.findByText("My task").should("be.visible");
   });
 });

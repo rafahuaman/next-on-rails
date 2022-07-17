@@ -47,11 +47,20 @@ Cypress.Commands.add("cleanDatabase", () => {
   }).its("body");
 });
 
-Cypress.Commands.add("appFactories", (args) => {
+Cypress.Commands.add("create", (args) => {
   cy.request({
     url: `${Cypress.env("backend_url")}/test/factories`,
     method: "post",
     failOnStatusCode: true,
-    body: args,
+    body: Object.assign({}, args, { factoryMethod: "create" }),
+  }).its("body");
+});
+
+Cypress.Commands.add("createList", (args) => {
+  cy.request({
+    url: `${Cypress.env("backend_url")}/test/factories`,
+    method: "post",
+    failOnStatusCode: true,
+    body: Object.assign({}, args, { factoryMethod: "create_list" }),
   }).its("body");
 });
