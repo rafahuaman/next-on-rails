@@ -5,6 +5,7 @@ describe("empty spec", () => {
       listCount: 2,
       attributes: {
         name: "My Todo List",
+        createdAt: new Date(Date.now() - 86400000),
       },
     });
     cy.visit("/");
